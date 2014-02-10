@@ -1,0 +1,147 @@
+
+
+
+.modal {
+	overflow-y:auto;
+	.modal-header {
+		* {
+			font-family: @avenirbold;
+			font-size: 18px;
+			display: inline-block;
+			text-transform: uppercase;
+		}
+		.close {
+			margin-top:7px;
+			margin-right: 10px;
+			float:right;
+		}
+		padding: 26px 26px 0px 26px;
+		border:0px solid;
+	}
+	.modal-dialog {
+		max-width:800px;
+		width:100%;
+		.modal-content {
+			h3 {
+				margin-top: 0px;
+			}
+			border-radius: 20px;
+			.modal-body {
+				padding: 8px 26px 26px 26px;
+				.left {
+					width:67%;
+					display:inline-block;
+					vertical-align:top;
+					.due {
+						.act;
+						display: inline-block;
+						padding:3px 5px;
+						padding-right:7px;
+						border-radius: 5px;
+						background-color: #ccc;
+						margin-top:10px;
+						&.ok {
+							background-color: #c9eafe;
+						}
+						&.notok {
+							background-color: #ffb1f9;
+						}
+						&.fire {
+							position: relative;
+							&:after {
+								position: absolute;
+								right: -20px;
+								top: -1px;
+								font-family: fontello;
+								content: '\e867';
+								font-size: 20px;
+								color: orange;
+							}
+						}
+					}
+					.task-description {
+						margin-top: 15px;
+					}
+					ul {
+						margin-top:20px;
+						li {
+							font-family : opensansitalic;
+							margin-bottom: 6px;
+							&.title {
+								font-family : opensansitalic;
+								font-size:14px;
+								color: @purple;
+								padding-bottom: 10px;
+								padding-top: 8px;
+							}
+							&.done {
+								color:#ccc;
+								span {
+									position: relative;
+									&:after {
+										content: '\e800';
+										position: absolute;
+										right: -19px;
+										display: block;
+										font-family: fontello;
+										color: #222;
+										top: 0px;
+										color: @purple;
+									}
+								}
+							}
+						}
+						&.activities {
+							li:not(.title) {
+								border-bottom: 1px solid #ccc;
+								padding-bottom: 20px;
+								margin-bottom: 20px;
+
+								.meta {
+									width : ~'calc(100% - 54px)';
+									display: inline-block;
+									margin-left: 9px;
+									margin-top: 12px;
+									font-family: AvenirLT;
+									.username {
+										font-family: opensanssemibold;
+										font-style: italic;
+										margin-right: 2px;
+									}
+									.activity-timestamp {
+										padding-top: 8px;
+									}
+								}
+								&:last-child {
+									padding-bottom: 0px;
+									border-bottom: 0px solid;
+								}
+							}
+						}
+					}
+				}
+				.right {
+					margin-left: 4%;
+					width : 28%;
+					display:inline-block;
+					vertical-align:top;
+					.subscribers {
+						text-align: left;
+					}
+					.task-actions {
+						margin-top: 20px;
+						margin-bottom: 12px;
+						li {
+							margin-bottom: 6px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.bootbox.modal.bootbox-confirm .modal-dialog .modal-content .modal-body {
+	padding-top: 34px;
+	font-size: 2.0em;
+}

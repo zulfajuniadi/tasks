@@ -1,0 +1,308 @@
+
+
+.background-cover(@url, @ypos: center, @xpos: center) {
+    background-image: url(@url);
+    background-size: cover;
+    background-position: @ypos @xpos;
+}
+
+.highlight(@bgcolor : #ccc) {
+    background-color:@bgcolor;
+}
+
+.ellipsis(@width: 100%) {
+    width: @width;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.transition(@element, @duration:0.2s, @ease:ease-out) {
+  -webkit-transition: @element @duration @ease;
+  -moz-transition: @element @duration @ease;
+  -o-transition: @element @duration @ease;
+  transition: @element @duration @ease;
+}
+
+.transition-complicated(@args) {
+  -webkit-transition: @args;
+  -moz-transition: @args;
+  -o-transition: @args;
+  transition: @args;
+}
+
+.rotate(@deg:90deg){
+  -webkit-transform: rotate(@deg);
+  -moz-transform: rotate(@deg);
+  transform: rotate(@deg);
+}
+
+.rounded(@radius:4px) {
+  -webkit-border-radius: @radius;
+  -bordermoz-border-radius: @radius;
+  border-radius: @radius;
+  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+}
+
+.transform-origin(@x-origin:50%, @y-origin:50%) {
+-moz-transform-origin:@x-origin, @y-originrigin;
+-webkit-transform-origin:@x-origin, @y-origin;
+-o-transform-originriginigin:@x-origin, @y-origin;
+-ms-transform-origin:@x-origin, @y-origin;
+    transform-origin:@x-origin, @y-origin;
+}
+
+.box-shadow(@args : 0px 0px 7px 2px #ccc) {
+  -webkit-box-shadow: @args;
+  -moz-box-shadow: @args;
+  box-shadow: @args;
+}
+
+.text-shadow(@args) {
+  -webkit-text-shadow: @args;
+  -moz-text-shadow: @args;
+  text-shadow: @args;
+}
+
+.act{
+    cursor: pointer;
+    &> *  {
+        &:hover {
+            .text-shadow(0px 1px 3px #bbb);
+        }
+    }
+}
+
+.act-block {
+    &:hover {
+        cursor: pointer;
+        .box-shadow(0px 0px 7px 2px #ccc);
+    }
+}
+
+.gradient(@color: #efefef, @start: #eee, @stop: #fff) {
+  background: @color;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, @start), color-stop(1, @stop));
+  background: -ms-linear-gradient(bottom, @start, @stop);
+  background: -moz-linear-gradient(center bottom, @start 0%, @stop 100%);
+}
+
+.b-gradient(@color: #efefef, @start: 0, @stop: 255) {
+  background: @color;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgb(@start,@start,@start)), color-stop(1, rgb(@stop,@stop,@stop)));
+  background: -ms-linear-gradient(bottom, rgb(@start,@start,@start) 0%, rgb(@start,@start,@start) 100%);
+  background: -moz-linear-gradient(center bottom, rgb(@start,@start,@start) 0%, rgb(@stop,@stop,@stop) 100%);
+}
+
+.stop-select(){
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.box-sizing(@type: border-box) {
+    -webkit-box-sizing: @type;
+    -moz-box-sizing:    @type;
+    box-sizing:         @type;
+}
+
+/* Utils / Odds and Ends */
+
+#newComment {
+    width : ~'calc(100% - 54px)';
+    padding: 8px 8px;
+    margin-top:2px;
+    margin-left: 8px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 3px 1px -2px #ccc;
+    border-radius: 5px
+}
+
+#newSubtask {
+    width : 200px;
+    padding: 8px 8px;
+    margin-top:8px;
+    margin-bottom: 8px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 3px 1px -2px #ccc;
+    border-radius: 5px
+}
+
+.grey {
+	color: #bbb;
+}
+
+.purple {
+	color: @purple;
+}
+
+.purple:hover {
+	text-decoration: none;
+	color: @purple;
+	cursor: pointer;
+}
+
+.label {
+	background-color: #ccc;
+	color: #333;
+	font-size: 100%;
+	padding: 5px 8px 4px;
+	font-family: AvenirLT;
+	border-radius: 5px;
+	margin-top: -1px;
+	font-weight: normal;
+	margin-right: 4px;
+}
+
+.label.purple {
+	background-color: @purple;
+	color: #fff;
+}
+
+
+.subscribers {
+	text-align: center;
+	li {
+		display:inline-block;
+		width: 40px;
+		height: 40px;
+		vertical-align: top;
+		&.new-subscriber {
+			.act-block;
+			border-radius: 20px;
+			background-color:#ccc;
+			color:white;
+			padding-top: 8px;
+			text-align: center;
+			font-size: 18px;
+		}
+	}
+}
+
+.round-mask {
+	display:inline-block;
+	vertical-align: top;
+	width: 40px;
+	height: 40px;
+	overflow:hidden;
+	border-radius: 20px;
+	margin-bottom:8px;
+	&.new-subscriber {
+		background-color:#ccc;
+		color:white;
+		padding-top: 8px;
+		text-align: center;
+		font-size: 18px;
+	}
+	&:hover {
+		.act-block;
+	}
+	img {
+		width: 100%;
+	}
+}
+
+.hide-action {
+	display: none;
+	&.abs {
+		position: absolute;
+		&.top-right {
+			top: 0px;
+			right: 0px;
+		}
+	}
+}
+
+.hover-show {
+	position: relative;
+	&:hover {
+		.hide-action {
+			display: block;
+			&.inline {
+				display: inline;
+			}
+		}
+	}
+}
+
+.subtask-undone::after {
+	content: '\e800';
+	font-family: fontello;
+	color: #ccc;
+}
+
+.subtask-remove::after {
+	right:-38px!important;
+	content: '\e802'!important;
+	font-family: fontello;
+	color: #ccc;
+}
+
+/* popover */
+
+.popover {
+	max-width: 295px;
+	input {
+		height: 33px;
+		width: 180px;
+		box-shadow: none;
+		border-radius: 4px;
+		border: 1px solid #ddd;
+		padding: 9px;
+	}
+}
+
+/* tooltips */
+
+[data-tooltip] {
+	position: relative;
+}
+
+[data-tooltip]:hover:after {
+	.act();
+	color:#fff;
+	display:block;
+	position: absolute;
+	content: '' attr(data-tooltip) '';
+	top: -34px;
+	padding: 4px 6px;
+	border-radius: 3px;
+	background-color: rgba(2,2,2,0.6);
+	color: white;
+	white-space: nowrap;
+	right: 0px;
+	font-size: 14px;
+}
+
+[data-tooltip]:hover:before {
+	content: '';
+	border: 5px solid transparent;
+	border-top: 5px solid rgba(2,2,2,0.6);
+	position:absolute;
+	top: -6px;
+}
+
+#login-buttons {
+	display: none;
+}
+
+/* progress bar */
+
+.white {
+	background-color: #fff;
+}
+
+.list-inline > li {
+	padding: 0;
+}
+
+th {
+	text-align: inherit;
+}
+
+.centered {
+	text-align: center;
+}

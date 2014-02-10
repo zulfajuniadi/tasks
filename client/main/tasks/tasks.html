@@ -1,0 +1,63 @@
+<template name="tasks">
+	<div class="container">
+		<div id="leader" class="hidden-sm hidden-xs">
+			<h1><a href="#/projects"> Home </a>&raquo; {{project.name}}</h1>
+			{{>leader}}
+		</div>
+		<div id="content">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="widget">
+						<div class="widget-heading">
+							<h2>New</h2>
+							{{#if project._id}}
+								<div id="newTask" class="task-actions">
+									<i class="icon-plus"></i>
+								</div>
+							{{/if}}
+						</div>
+						<hr />
+						<div class="task-body">
+							<ul class="tasks list-unstyled" data-state="new">
+								{{#each tasks.new}}
+									{{>taskEntries}}
+								{{/each}}
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="widget">
+						<div class="widget-heading">
+							<h2>Doing</h2>
+						</div>
+						<hr />
+						<div class="task-body">
+							<ul class="tasks list-unstyled" data-state="doing">
+								{{#each tasks.doing}}
+									{{>taskEntries}}
+								{{/each}}
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="widget">
+						<div class="widget-heading">
+							<h2>Done</h2>
+						</div>
+						<hr />
+						<div class="task-body">
+							<ul class="tasks list-unstyled" data-state="done">
+								{{#each tasks.done}}
+									{{>taskEntries}}
+								{{/each}}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{{>taskForm}} <!-- Modal -->
+</template>

@@ -1,0 +1,22 @@
+<template name="calendar">
+	<div class="container">
+		<div id="leader" class="hidden-sm hidden-xs">
+			<h1>Your Calendar</h1>
+			{{>leader}}
+		</div>
+		<div id="content">
+			<div class="row">
+				<div class="widget" id="calendar">
+				</div>
+				<div class="widget">
+					<h4>Events</h4>
+					{{#each events}}
+						<label for="{{_id}}">
+							<input type="checkbox" value="checked" id="{{_id}}"> {{name}}
+						</label>
+					{{/each}}
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

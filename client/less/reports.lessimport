@@ -1,0 +1,25 @@
+
+.reports {
+	table {
+		margin-bottom: 0px;
+	}
+	th {
+		background-color: #4f3595;
+		color : white;
+	}
+	tbody tr {
+		border-bottom: 1px solid #ddd;
+		td {
+			vertical-align: middle;
+			&.ok {
+				background-color: #d8f1de;
+			}
+			&.notok {
+				background-color: #f6dfdd;
+			}
+		}
+	}
+	.filtered {
+		background-color: #9d3862;
+	}
+}

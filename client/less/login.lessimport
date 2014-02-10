@@ -1,0 +1,170 @@
+#login-bg {
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+    padding-top: 280px;
+    .background-cover('/images/background.jpg');
+}
+
+.login-wrapper {
+    position: relative;
+    margin:0 auto;
+    background-color: @purple;
+    padding : 0 25px 25px 25px;
+    max-width: 390px;
+    &::before {
+        position: absolute;
+        content : '';
+        top : -105px;
+        left: 0px;
+        height: 75px;
+        width: 100%;
+        background-image : url('/images/logo.png');
+        background-repeat : no-repeat;
+        background-size: contain;
+    }
+
+    * {
+        color : white;
+    }
+    .tabs {
+        width: ~'calc(100% + 52px)';
+        margin-left:-25px;
+        display:flex;
+        display:-webkit-flex;
+        font-weight: 200;
+        dt {
+            margin:0 auto;
+            background-color: black;
+            width:auto;
+            text-align:center;
+            padding: 10px 25px;
+            margin-left: 1px;
+            font-size:16px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow:ellipsis;
+            &:hover {
+                cursor: pointer;
+            }
+            &.active {
+                background-color: @purple;
+                + dd {
+                    background-color: @purple;
+                    display: block;
+                    position: absolute;
+                    left: 0px;
+                    top:42px;
+                    width:100%;
+                    padding:25px;
+                }
+            }
+        }
+        dd {
+            display: none;
+            h1 {
+                font-size: 34px;
+                font-family: @avenirbold;
+            }
+            & > * {
+                margin-top:7px;
+                margin-bottom:7px;
+            }
+            p {
+                margin-bottom: 40px;
+                font-size: 14px;
+            }
+            .alert.alert-danger {
+                color: #b94a48;
+                margin-top:0px;
+                margin-bottom:20px;
+                font-size: 16px;
+                text-transform: uppercase;
+                padding: 14px;
+                text-align: center;
+            }
+            input {
+                margin-bottom: 10px;
+            }
+            input:not([type="submit"]) {
+                color: black;
+                height:40px;
+                padding: 1px 10px;
+                font-size: 18px;
+                border: 0px solid;
+                width:100%
+            }
+            input[type=submit], button {
+                font-family: @avenirbold;
+                padding: 10px;
+                font-weight: 700;
+                background-color: white;
+                border: 0px solid;
+                color: black;
+                font-size: 18px;
+                text-transform: uppercase;
+                height:41px;
+            	display: inline-block;;
+            	vertical-align: top;
+                &:hover {
+                	text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+/* Mozilla specific overrides */
+
+@-moz-document url-prefix() {
+    .login-wrapper .tabs dt {
+        padding: 10px 28px;
+    }
+}
+
+/* Responsive-ish */
+
+@media (max-device-width: 480px) {
+    body {
+        padding: 10px;
+        overflow: hidden;
+    }
+    .login-wrapper {
+        margin-top: 74px;
+        &:before {
+            top: -72px;
+        }
+        .tabs {
+            dt {
+                padding: 10px 9px;
+            }
+            dd {
+                padding: 15px;
+                p {
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 400px) {
+    body {
+        padding: 10px;
+        overflow: hidden;
+    }
+    .login-wrapper {
+        margin-top: 74px;
+        &:before {
+            top: -72px;
+        }
+        .tabs {
+            dt {
+                padding: 10px 9px;
+            }
+            dd {
+                padding: 15px;
+            }
+        }
+    }
+}

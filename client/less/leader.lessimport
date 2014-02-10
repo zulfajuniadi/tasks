@@ -1,0 +1,42 @@
+#leader {
+	height: 95px;
+	h1 {
+		display: inline-block;
+		font-family: @avenirbold;
+	}
+	.filter {
+		float:right;
+		display: inline-block;
+		margin-top:18px;
+		.dropdown {
+			display: inline-block;
+			vertical-align: baseline;
+			.act;
+			.dropdown-menu {
+				top: 20px;
+				right: -10px;
+				left:auto;
+				box-shadow: 0 6px 12px #555;
+				border: 1px solid #ccc;
+			}
+		}
+	}
+	.status-icons {
+		margin-left: 36px;
+		display: inline-block;
+		i {
+			display: inline-block;
+			.act-block;
+			width: 44px;
+			height: 40px;
+			vertical-align:middle;
+			font-size:20px;
+			text-align: center;
+			padding-top: 7px;
+			&.purple, &.purple a {
+				color: white;
+				background-color:@purple;
+			}
+		}
+	}
+}

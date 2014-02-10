@@ -1,0 +1,245 @@
+#content {
+	.widget {
+
+		margin-bottom: 30px;
+		border: 1px solid #ccc;
+		border-radius: 10px;
+		padding: 12px;
+		background-color: white;
+		.box-shadow(0px 7px 6px -6px #333);
+
+		&#calendar {
+			padding: 30px;
+		}
+
+		.task-title {
+			font-family: opensanslightitalic;
+			margin-top:26px;
+			color: #333;
+			span  {
+				.act;
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+			h2 {
+				a {
+					font-family: @avenirbold;
+					text-transform: uppercase;
+					height: 65px;
+					overflow: hidden;
+					font-weight: normal;
+					color: #222;
+					font-style: normal;
+					display: inline-block;
+					min-width: 333px;
+				}
+			}
+		}
+
+		.task-actions {
+			span {
+				color: @purple;
+				.act;
+				i {
+					margin-right : 4px;
+				}
+			}
+			.time {
+				position: relative;
+				float:right;
+				text-align: center;
+				color: white;
+				background-color : @purple;
+				padding: 8px 12px;
+				font-style: italic;
+				font-size : 11px;
+				margin-top: -27px;
+				&.done {
+					background-color: #999;
+				}
+				&.overdue {
+					background-color: red;
+				}
+				div {
+					font-size: 18px;
+					font-style: normal;
+					&:after {
+						content: attr(data-title);
+						position:absolute;
+						display: block;
+						color: #999;
+						left: -54px;
+						bottom:10px;
+						font-size:11px;
+					}
+				}
+			}
+		}
+
+		.widget-heading {
+			margin: -12px;
+			padding: 12px;
+			background-color: @purple;
+			border-top-left-radius: 10px;
+			border-top-right-radius: 10px;
+			h2 {
+				margin:0;
+				color:white;
+				font-family:@avenirbold;
+				display: inline-block;
+				font-weight: normal;
+				font-size:20px;
+				text-transform: capitalize;
+			}
+
+			.task-actions {
+				display:inline-block;
+				float:right;
+				color:white;
+				font-size:24px;
+				margin-top:-3px;
+				.act();
+			}
+		}
+
+		.task-body {
+			margin-top: -6px;
+			.tasks {
+				min-height: 5px;
+				font-family: opensansregular;
+				> li {
+					min-height: 50px;
+					border-bottom: 1px solid #ccc;
+					padding-bottom:10px;
+					padding-top:10px;
+					&:first-child {
+						padding-top: 0px;
+					}
+					&.ui-sortable-helper{
+						background-color: white;
+						padding: 5px;
+						display:inline-block;
+					}
+					.task-info {
+						width: ~'calc(100% - 92px)';
+						display: inline-block;
+						vertical-align: top;
+						.due {
+							.act;
+							display: inline-block;
+							padding:3px 5px;
+							padding-right:7px;
+							border-radius: 5px;
+							background-color: #ccc;
+							margin-top:10px;
+							&.ok {
+								background-color: #c9eafe;
+							}
+							&.notok {
+								background-color: #ffb1f9;
+							}
+							&.fire {
+								position: relative;
+								&:after {
+									position: absolute;
+									right: -20px;
+									top: -1px;
+									font-family: fontello;
+									content: '\e867';
+									font-size: 20px;
+									color: orange;
+								}
+							}
+						}
+					}
+					.subscribers {
+						text-align: right;
+						width: 86px;
+						display: inline-block;
+						vertical-align: top;
+					}
+				}
+			}
+			.task-status {
+				> * {
+					display: inline-block;
+					vertical-align: top;
+				}
+				ul {
+					width: 45%;
+					margin-top: 10px;
+					padding-left:10px;
+					li {
+						font-family: opensanssemibold;
+						margin-bottom:16px;
+						line-height: 14px;
+						span {
+							font-size: 18px;
+							float: left;
+							margin-right: 8px;
+							max-width:42px;
+							overflow: hidden;
+						}
+					}
+				}
+				div {
+					color : @purple;
+					margin-top: 0px;
+					width: 53%;
+					text-align: center;
+					font-size: 14px;
+					text-transform: uppercase;
+					padding-top: 8px;
+					div {
+						width: 100%;
+						font-size: 60px;
+					}
+				}
+
+			}
+		}
+
+		.task-footer {
+			a {
+				color: #00b4da;
+			}
+			text-align: right;
+			font-family: opensanslightitalic;
+			font-size: 11px;
+			.act;
+		}
+	}
+
+	.new-widget {
+		.act;
+		.box-shadow(0px 7px 6px -6px #333);
+		margin-bottom: 30px;
+		border: 1px solid #ccc;
+		border-radius: 10px;
+		padding: 12px;
+		padding-top:117px;
+		height:442px;
+		text-align:center;
+		background-color: white;
+		h1 {
+			margin-bottom: 18px;
+		}
+		p {
+			text-align: center;
+			span {
+				display:inline-block;
+				width: 60px;
+				height: 60px;
+				overflow:hidden;
+				border-radius: 30px;
+				background-color:@purple;
+				color:white;
+				padding-top: 6px;
+				text-align: center;
+				font-size: 36px;
+			}
+
+		}
+	}
+}

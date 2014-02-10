@@ -1,0 +1,77 @@
+<template name="reports">
+	<div class="container">
+	    <div id="leader" class="hidden-sm hidden-xs">
+			<h1><a href="#/projects"> Home </a>&raquo; Reports</h1>
+	        {{>leader}}
+	    </div>
+	    <div id="content" class="reports">
+	    	<div class="widget">
+	    		<div class="filters">
+
+	    		</div>
+				<table class="table centered">
+					<thead>
+						<tr>
+							<th>Project Name</th>
+							<th class="filtered">
+								Task Name
+								<i class="fa fa-filter"></i>
+								<i class="fa fa-chevron-down"></i>
+							</th>
+							<th>Assigned To</th>
+							<th>Assigned On</th>
+							<th>Started On</th>
+							<th>Due On</th>
+							<th>Done On</th>
+							<th>Performance</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each tasks}}
+						<tr>
+							<td>
+								<b>{{projectName}}</b>
+							</td>
+							<td>{{name}}</td>
+							<td>
+								<ul class="list-unstyled list-inline">
+									{{#each users}}
+										<li>
+											<div class="round-mask">
+												<img src="{{profile.gravatar}}" alt="">
+											</div>
+										</li>
+									{{/each}}
+								</ul>
+							</td>
+							<td>
+								{{date startDate}}
+								{{#if startDate}}<br/>Week {{dateWeek startDate}}{{/if}}
+							</td>
+							<td class="{{#checkStartDate this}} {{else}}notok{{/checkStartDate}}">
+								{{date doingDate}}
+								{{#if doingDate}}<br/>Week {{dateWeek doingDate}}{{/if}}
+							</td>
+							<td>
+								{{date endDate}}
+								{{#if endDate}}<br/>Week {{dateWeek endDate}}{{/if}}
+							</td>
+							<td class="{{#checkEndDate this}}ok{{else}}notok{{/checkEndDate}}">
+								{{date doneDate}}
+								{{#if doneDate}}<br/>Week {{dateWeek doneDate}}{{/if}}
+							</td>
+							<td >
+
+							</td>
+						</tr>
+						{{else}}
+							<tr>
+								<td colspan="8" class="centered">No tasks found.</td>
+							</tr>
+						{{/each}}
+					</tbody>
+				</table>
+	    	</div>
+	    </div>
+	</div>
+</template>

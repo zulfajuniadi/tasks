@@ -1,0 +1,30 @@
+<template name="taskEntries">
+	<li class="task" data-taskid="{{_id}}">
+		<div class="task-info">
+			<div class="title taskDetails act">
+				{{name}}
+			</div>
+			{{#if projectName}}
+				<div class="label label-important">
+					{{projectName}}
+				</div>
+			{{/if}}
+			{{#if parent}}
+				<label class="label label-info">Subtask</label>
+			{{/if}}
+			<div class="due fire">
+				<i class="icon-stopwatch"></i>
+				{{dateFromNow endDate}} Days
+			</div>
+		</div>
+		<ul class="subscribers list-unstyled">
+			{{#each assigned}}
+				<li data-tooltip="{{profile.name}} ({{profile.username}})">
+					<div class="round-mask">
+						<img src="{{profile.gravatar}}" alt="">
+					</div>
+				</li>
+			{{/each}}
+		</ul>
+	</li>
+</template>

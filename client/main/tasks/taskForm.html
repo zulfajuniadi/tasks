@@ -1,0 +1,74 @@
+<template name="taskForm">
+	<div class="modal fade" id="task-form">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 id="task-form-title">New Task</h4>
+					<button type="button" class="btn btn-secondary close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				</div>
+				<div class="modal-body" id="task-form-body">
+					<hr>
+					<br>
+					{{>taskFormContents}}
+				</div>
+			</div>
+		</div>
+		{{#each users}}{{/each}}
+		{{#if project}}
+		{{/if}}
+	</div>
+</template>
+
+
+<template name="taskFormContents">
+	<form class="form-horizontal taskForm" method="post" role="form">
+		<input type="hidden" name="projectId" value="{{project._id}}">
+		{{#if task}}
+			<input type="hidden" name="parent" value="{{task._id}}">
+			<input type="hidden" name="level" value="{{nextInt task.level}}">
+		{{else}}
+			<input type="hidden" name="level" value="0">
+		{{/if}}
+		<div class="form-group">
+			<label for="title" class="col-sm-2 control-label">Task Title</label>
+			<div class="col-sm-10">
+				<input name="name" type="text" class="form-control" id="title" placeholder="Task Title" required>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="description" class="col-sm-2 control-label">Task Description</label>
+			<div class="col-sm-10">
+				<textarea name="description" rows="4" class="form-control" id="description" placeholder="Task Description"></textarea>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="assigned" class="col-sm-2 control-label">Assigned To</label>
+			<div class="col-sm-10">
+				<input name="assigned" type="text" class="form-control assigned" id="assigned" placeholder="Assigned To">
+			</div>
+		</div>
+		<!-- <div class="form-group">
+			<label for="followers" class="col-sm-2 control-label">Followers</label>
+			<div class="col-sm-10">
+				<input name="followers" type="text" class="form-control" id="followers" placeholder="Followers">
+			</div>
+		</div> -->
+		<div class="form-group">
+			<label for="" class="col-sm-2 control-label">Start Date</label>
+			<div class="col-sm-10">
+				<input name="startDate" type="text" class="form-control startDate" requried>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="" class="col-sm-2 control-label">End Date</label>
+			<div class="col-sm-10">
+				<input name="endDate" type="text" class="form-control endDate" required>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<button type="submit" class="btn btn-primary btn-large">Create Task</button>
+			</div>
+		</div>
+	</form>
+	</template>

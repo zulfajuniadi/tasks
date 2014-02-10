@@ -1,0 +1,166 @@
+<template name="taskDetailsModal">
+	<div class="modal fade" id="task-details-modal">
+		<div class="modal-dialog">
+			{{>taskDetails}}
+		</div>
+	</div>
+</template>
+
+<template name="taskDetails">
+
+	<div class="modal-content">
+		<div class="modal-header">
+			<h4 id="task-details-modal-title">
+				{{task.name}}
+			</h4>
+			<button type="button" class="btn btn-secondary close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		</div>
+		<div class="modal-body" id="task-details-modal-body">
+			<div class="">
+				{{#with task}}
+					<span rel="popover" id="rescheduleStartDate" data-title="Edit Start Date" data-placement="bottom" data-html="true" data-content="<input id='rescheduleSDInput' data-prop='startDate' value='{{startDate}}' data-maxdate='{{endDate}}' type='text'/>" class="purple">
+						{{date startDate}}
+					</span>
+					-
+					<span rel="popover" id="rescheduleEndDate" data-title="Edit End Date" data-placement="bottom" data-html="true" data-content="<input id='rescheduleEDInput' data-prop='endDate' value='{{endDate}}' data-mindate='{{startDate}}' type='text'/>" class="purple">
+					{{date endDate}}
+				</span>
+				{{/with}}
+			</div>
+			<div class="left">
+				<span class="label purple">
+					<i class="icon-home"></i>
+					{{project.name}}
+				</span>
+				<div class="due fire">
+					<i class="icon-stopwatch"></i>
+					{{dateFromNow task.endDate}} Days
+				</div>
+				<div class="task-description">
+					{{task.description}}
+				</div>
+				<ul class="subtask list-unstyled">
+					{{#if task.parent}}
+						{{#with task.parent}}
+							<li class="title">
+								<span>Parent</span>
+							</li>
+							<li class>
+								<a class="subtaskLink act">{{name}}</a>
+							</li>
+						{{/with}}
+					{{/if}}
+					<li class="title">
+						<span>Subtask</span>
+					</li>
+					{{#each task.subtasks}}
+						<li class>
+							<a class="subtaskLink act">{{name}}</a>
+						</li>
+					{{else}}
+						<li class="grey list-placeholder">
+							No Subtasks Available
+						</li>
+					{{/each}}
+				</ul>
+				<ul class="activities list-unstyled">
+					<li class="title">Activity</li>
+					<li>
+						<div class="round-mask">
+							<img src="{{user.profile.gravatar}}" alt="">
+						</div>
+						<input type="text" id="newComment" autofocus data-taskid="{{task._id}}" placeholder="Enter to add new comment">
+					</li>
+					{{#each task.activities}}
+						<li class="{{type}}">
+							<div class="round-mask">
+								<img src="{{user.profile.gravatar}}" alt="">
+							</div>
+							<div class="meta">
+								<div class="hover-show">
+									<span class="username">{{user.profile.name}} </span> {{message}}
+									{{#if user ../user._id}}
+										<div class="hide-action abs top-right">
+											<button class="deleteActivity icon-trash"></button>
+										</div>
+									{{/if}}
+								</div>
+								<div class="activity-timestamp">
+									{{dateTime createdAt}}
+								</div>
+							</div>
+						</li>
+					{{else}}
+						<li class="grey list-placeholder">
+							No Activities Available
+						</li>
+					{{/each}}
+				</ul>
+			</div>
+			<div class="right">
+				<h3 class="grey">Assigned To
+				<div class="btn-group">
+				  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+				    <span class="fa fa-cog"></span>
+				  </button>
+				  <ul class="dropdown-menu pull-right" role="menu">
+				  	{{#each project.sharedWith}}
+				  		{{#withUser this}}
+				   			<li><a>
+				   				<img src="{{profile.gravatar}}" alt="">
+				   				<p>{{profile.name}}</p>
+				   				<p>{{profile.username}}</p>
+				   			</a></li>
+				   		{{/withUser}}
+				  	{{/each}}
+				    <!-- <li class="divider"></li>
+				    <li><a href="#"></a></li> -->
+				  </ul>
+				</div>
+			</h3>
+				<ul class="subscribers list-unstyled">
+					{{#each task.assignedTo}}
+						<li data-tooltip="{{profile.name}} ({{profile.username}})" rel="popover" data-html="true" data-placement="bottom" data-content="<div style='white-space:nowrap'><input type='text' disabled='disabled' value='{{profile.name}}' /> <button  data-taskid='{{task._id}}' id='unshare' class='btn btn-danger'>Unassign</button></div>">
+							<div class="round-mask">
+								<img src="{{profile.gravatar}}" alt="">
+							</div>
+						</li>
+					{{/each}}
+					{{#with task}}
+					<li class="round-mask new-subscriber">
+						<i class="icon-plus" rel="popover" data-html="true" data-placement="bottom" data-content="<form id='addAssigned'><div style='white-space:nowrap'><input placeholder='Email' id='addAssignedInput' data-projectid='{{_id}}'  type='email' required='required' /> <button class='btn btn-primary'>Add</button></div></form>"></i>
+					</li>
+					{{/with}}
+				</ul>
+				<div class="task-actions" {{bind}}>
+					<h3 class="grey">Actions</h3>
+					<ul class="list-unstyled">
+						{{#with task}}
+							<!-- <li>
+								<a id="toggleTaskForm" rel="popover" data-title="New Subtask" data-placement="bottom" data-html="true" data-content="<input id='newSubtask' placeholder='Enter to create new Subtask'/>" class="purple icon-plus"> NEW SUBTASK</a>
+							</li> -->
+							<li>
+								<a id="toggleTaskForm" class="purple icon-plus"> NEW SUBTASK</a>
+							</li>
+							<!-- <li>
+								<a rel="popover" id="rescheduleTrigger" data-title="New Subtask" data-placement="bottom" data-html="true" data-content="<input id='reschedule' value='{{endDate}}' type='text'/>" class="purple icon-stopwatch"> RESCHEDULE</a>
+							</li> -->
+							<li>
+								<a class="purple icon-attach"> ATTACH A FILE</a>
+							</li>
+							<li>
+								<a class="purple icon-trash unlinkTask"> DELETE TASK</a>
+							</li>
+						{{/with}}
+					</ul>
+				</div>
+			</div>
+			{{#if newTaskForm}}
+				<hr>
+				<h4>New Subtask</h4>
+				<hr>
+				{{>taskFormContents}}
+			{{/if}}
+		</div>
+	</div>
+</template>

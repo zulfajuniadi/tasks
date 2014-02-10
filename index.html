@@ -1,0 +1,36 @@
+<head>
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>tasks</title>
+</head>
+
+<body>
+  {{> outlet}}
+</body>
+
+<template name="outlet">
+	{{#routeHas 'login'}}
+		{{>login}}
+	{{else}}
+		{{>header}}
+		{{#routeHas 'projects'}}
+			{{>projects}}
+		{{/routeHas}}
+		{{#routeHas 'tasks'}}
+			{{>tasks}}
+			{{>taskDetailsModal}} <!-- Modal -->
+		{{/routeHas}}
+		{{#routeHas 'mytask'}}
+			{{>tasks}}
+			{{>taskDetailsModal}}
+		{{/routeHas}}
+		{{#routeHas 'calendar'}}
+			{{>calendar}}
+		{{/routeHas}}
+		{{#routeHas 'reports'}}
+			{{>reports}}
+		{{/routeHas}}
+		{{#routeHas 'gantt'}}
+			{{>gantt}}
+		{{/routeHas}}
+	{{/routeHas}}
+</template>

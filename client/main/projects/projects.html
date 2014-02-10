@@ -1,0 +1,24 @@
+<template name="projects">
+	<div class="container">
+	    <div id="leader" class="hidden-sm hidden-xs">
+	        <h1>Hasrimy.com Task Manager</h1>
+	        {{>leader}}
+	    </div>
+	    <div id="content">
+	        <div class="row">
+	            {{#each projects}}
+	            	{{>projectEntries}}
+	            {{/each}}
+	            <div class="col-md-4">
+	                <div class="new-widget">
+	                    <h1>Your awesome project here.</h1>
+	                    <p>
+	                        <span class="icon-plus" id="newProject"></span>
+	                    </p>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	{{>projectForm}}
+</template>

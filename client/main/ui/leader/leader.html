@@ -1,0 +1,39 @@
+<template name="leader">
+	<div class="filter">
+		Filter by:
+		<div class="dropdown">
+			<div class="dropdown-toggle" id="filterDropdown" data-toggle="dropdown">
+				Latest
+				<span class="caret"></span>
+			</div>
+			<ul class="dropdown-menu" role="menu" aria-labelledby="filterDropdown">
+				<!-- <li role="presentation">
+					<a role="menuitem" tabindex="-1" href="#">Action</a>
+				</li>
+				<li role="presentation">
+					<a role="menuitem" tabindex="-1" href="#">Another action</a>
+				</li>
+				<li role="presentation">
+					<a role="menuitem" tabindex="-1" href="#">Something else here</a>
+				</li>
+				<li role="presentation" class="divider"></li>
+				<li role="presentation">
+					<a role="menuitem" tabindex="-1" href="#">Separated link</a>
+				</li> -->
+			</ul>
+		</div>
+		<div class="status-icons">
+			<i data-tooltip="Your Tasks" class="purple">
+				<a href="/#/tasks" class="icon-chart-bar icon-rotated-180"></a>
+			</i>
+			<!-- <i class="icon-chart-line purple"></i> -->
+			<!-- <i class="icon-calendar purple"></i> -->
+			<i data-tooltip="Reports" class="purple">
+				<a href="/#/reports" class="fa fa-star"></a>
+			</i>
+			<i data-tooltip="Gantt Planner" class="purple">
+				<a href="/#/gantt/{{activeProject}}" class="fa fa-align-left"></a>
+			</i>
+		</div>
+	</div>
+</template>

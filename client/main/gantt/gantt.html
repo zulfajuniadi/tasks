@@ -1,0 +1,20 @@
+<template name="gantt">
+	<div class="container">
+		<div id="leader" class="hidden-sm hidden-xs">
+			<h1><a href="#/projects"> Home </a>&raquo; Gantt Planner</h1>
+			{{>leader}}
+		</div>
+		<div id="content">
+			<div class="row">
+				<div class="widget">
+					<div id="gantt"></div>
+				</div>
+			</div>
+			{{#with tasks}}
+			{{/with}}
+			{{#with project}}
+			{{/with}}
+		</div>
+	</div>
+	{{>taskForm}}
+</template>

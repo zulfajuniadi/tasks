@@ -1,0 +1,69 @@
+<template name="projectEntries">
+	<div class="col-md-4">
+		<div class="widget">
+			<div class="task-actions">
+				<span data-tooltip="Add to Archive">
+					<i class="icon-archive"></i> Archive
+				</span>
+				{{#dateFromNowPassed endDate}}
+				<div class="time overdue">
+					<div data-title="Overdue">{{dateFromNow endDate}}</div>
+					Days
+				</div>
+				{{else}}
+				<div class="time">
+					<div data-title="Due In">{{dateFromNow endDate}}</div>
+					Days
+				</div>
+				{{/dateFromNowPassed}}
+			</div>
+			<div class="task-title">
+				<h2><a href="#/project/{{_id}}/tasks">{{name}}</a></h2>
+				Start : <span data-tooltip="Change Start Date" rel="popover" id="rescheduleStartDate" data-title="Edit Start Date" data-placement="bottom" data-html="true" data-content="<input id='rescheduleSDInput' data-prop='startDate' value='{{startDate}}' data-maxdate='{{endDate}}' type='text'>">{{date startDate}}</span> | Deadline: <span data-tooltip="Change The End Date" rel="popover" id="rescheduleEndDate" data-title="Edit End Date" data-placement="bottom" data-html="true" data-content="<input id='rescheduleEDInput' data-prop='endDate' value='{{endDate}}' data-maxdate='{{endDate}}' type='text'>">{{date endDate}}</span>
+			</div>
+			<hr />
+			<div class="task-body">
+				<div class="task-status">
+					<ul class="list-unstyled">
+						<li class="overdue">
+							<span>0</span>Overdue</li>
+						<li>
+							<span>{{length tasks.new}}</span>New
+						</li>
+						<li>
+							<span>{{length tasks.doing}}</span>Doing
+						</li>
+						<li>
+							<span>{{length tasks.done}}</span>Done
+						</li>
+					</ul>
+					<div>
+						<div>0%</div>
+						task completed
+					</div>
+				</div>
+				<div class="subscribers">
+					<ul class="list-unstyled">
+						{{#each users}}
+						<li data-tooltip="{{profile.name}} ({{profile.username}})" rel="popover" data-html="true" data-placement="bottom" data-content="<div style='white-space:nowrap'><input type='text' disabled='disabled' value='{{profile.name}}' /> <button  data-projectid='{{../_id}}' id='unshare' class='btn btn-danger'>Unshare</button></div>">
+							<div class="round-mask">
+								<img src="{{profile.gravatar}}" alt="">
+							</div>
+						</li>
+						{{/each}}
+						<li class="new-subscriber" rel="popover" data-html="true" data-placement="bottom" data-content="<form id='shareProject'><div style='white-space:nowrap'><input placeholder='Email' id='shareProjectInput' data-projectid='{{_id}}' list='languages' type='email' required='required' /> <button class='btn btn-primary'>Share</button></div></form>">
+							<i class="icon-plus"></i>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<hr />
+			<div class="task-footer">
+				<a href="#/project/{{_id}}/tasks" class="icon-list"> VIEW TASKS </a> |
+				<a href="#/reports/{{_id}}" class="icon-eye"> VIEW REPORT</a> |
+				<a class="act renameProject icon-pencil" rel="popover" data-html="true" data-placement="bottom" data-content="<form id='renameProject'><div style='white-space:nowrap'><input placeholder='Project Name' id='renameProjectInput' type='text' required='required' /> <button class='btn btn-primary'>Rename</button></div></form>"> RENAME</a> |
+				<a class="act removeProject icon-trash"> REMOVE</a>
+			</div>
+		</div>
+	</div>
+</template>
